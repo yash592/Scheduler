@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { employeeUpdate, employeeCreate } from '../actions';
 import { View, Text } from 'react-native';
 import { Card, CardSection, Input, Button } from './common';
+import EmployeeForm from './EmployeeForm';
+
 
 
 class EmployeeCreate extends Component {
@@ -18,14 +20,15 @@ class EmployeeCreate extends Component {
 	render () {
 		console.log(this.props.employee);
 		return (
+
 			<Card>
-					<CardSection>
-			       
-			         <Button onPress={this.onButtonPress.bind(this)}>
-			           Create
-			         </Button>
+				<EmployeeForm {...this.props} />
+					<CardSection>			       
+			         	<Button onPress={this.onButtonPress.bind(this)}>
+			          		 Create
+			         	</Button>
 			       </CardSection>
-			     </Card>
+		     </Card>
 		);
 	}
 }

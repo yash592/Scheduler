@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Picker } from 'react-native';
-import { CardSection, Input } from './common';
+import { connect } from 'react-redux';
+import { employeeUpdate } from '../actions';
+import { Card, CardSection, Input } from './common';
 
 class EmployeeForm extends Component {
 	render() {
@@ -42,8 +44,22 @@ class EmployeeForm extends Component {
 				</Picker>
 			</CardSection>
 
-			<CardSection>
+			
 			</View>
-			)
+		)
 	}
 }
+
+const styles={
+	pickerTextStyle: {
+		fontSize: 18,
+		paddingLeft: 20
+	}
+}
+
+const mapStateToProps = (state) => {
+	const { name, phone, shift } = state.employeeForm;
+	return { name, phone, shift };
+}
+
+export default connect (mapStateToProps, { employeeUpdate}) (EmployeeForm);
